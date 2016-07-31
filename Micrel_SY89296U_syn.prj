@@ -2,6 +2,7 @@
 #-- Project file R:\FPGA\Micrel_SY89296U\Micrel_SY89296U_syn.prj
 #project files
 
+add_file -vhdl -lib work "top.vhdl" 
 #implementation: "Micrel_SY89296U_Implmnt"
 impl -add Micrel_SY89296U_Implmnt -type fpga
 
@@ -51,5 +52,5 @@ set_option -write_apr_constraint 1
 project -result_format "edif"
 project -result_file ./Micrel_SY89296U_Implmnt/Micrel_SY89296U.edf
 project -log_file "./Micrel_SY89296U_Implmnt/Micrel_SY89296U.srr"
-impl -active "Micrel_SY89296U_Implmnt"
+impl -active Micrel_SY89296U_Implmnt
 project -run synthesis -clean
