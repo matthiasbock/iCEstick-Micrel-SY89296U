@@ -20,6 +20,10 @@ entity top is
         delay_out        : out std_logic;
         delay_in         : in  std_logic;
         
+        -- demo outputs
+        output_undelayed : out std_logic;
+        output_delayed   : out std_logic;
+
         -- LED outputs
         led_top          : out std_logic;
         led_left         : out std_logic;
@@ -41,8 +45,8 @@ architecture main of top is
 begin
     -- manage reset signals
     reset <= '0' after 30ns;
-
-    --delay_setup <= others => '1';
+    
+    delay_setup <= (others => '1');
     
     --
     -- Clock divider: 12 MHz -> 10 kHz
@@ -84,11 +88,16 @@ begin
         end if;
     end process;
     
+    -- Test 10 kHz clock
     led_top <= clock_10khz;
+
+    -- Test output of test pulses
     led_bottom <= delay_out;
-    
-    --
+
     -- Test arrival of delayed pulse
-    --
     led_center <= delay_in;
+
+    -- compare delayed and undelayed pulses
+    output_undelayed <= delay_out;
+    output_delayed   <= delay_in;
 end;

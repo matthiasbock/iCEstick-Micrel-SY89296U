@@ -26,3 +26,6 @@ set_io delay_setup[9] 114
 
 set_io delay_out 113
 set_io delay_in 56
+
+set_io output_undelayed 78
+set_io output_delayed 79
