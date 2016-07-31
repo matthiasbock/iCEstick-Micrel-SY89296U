@@ -1,0 +1,9 @@
+*_Implmnt/
+*.log
+synlog.tcl
+*.bak
+*.*~
+.project
+.settings/
+
+*.xcf
