@@ -1,0 +1,28 @@
+# ##############################################################################
+# iCEcube PCF
+# Version:            2016.02.27810
+# Family & Device:    iCE40HX1K
+# Package:            TQ144
+# ##############################################################################
+
+set_io clock_12mhz 21
+
+set_io led_top 99
+set_io led_left 96
+set_io led_center 95
+set_io led_right 98
+set_io led_bottom 97
+
+set_io delay_setup[0] 44
+set_io delay_setup[1] 45
+set_io delay_setup[2] 47
+set_io delay_setup[3] 48
+set_io delay_setup[4] 116
+set_io delay_setup[5] 117
+set_io delay_setup[6] 118
+set_io delay_setup[7] 119
+set_io delay_setup[8] 115
+set_io delay_setup[9] 114
+
+set_io delay_out 113
+set_io delay_in 56
