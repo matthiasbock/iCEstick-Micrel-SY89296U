@@ -5,3 +5,6 @@ synlog.tcl
 *.*~
 .project
 .settings/
+
+*.xcf
+

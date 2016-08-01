@@ -32,7 +32,7 @@ Version=Lattice Semiconductor Corporation iCEcube - Release: 2016.02.27810 - Bui
 ProjectName=Micrel_SY89296U
 Vendor=SiliconBlue
 Synthesis=synplify
-ProjectVFiles=top.vhdl
+ProjectVFiles=top.vhdl=work
 ProjectCFiles=
 CurImplementation=Micrel_SY89296U_Implmnt
 Implementations=Micrel_SY89296U_Implmnt
