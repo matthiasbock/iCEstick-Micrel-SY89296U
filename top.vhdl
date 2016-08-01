@@ -1,6 +1,5 @@
 library ieee;
 use ieee.std_logic_1164.all;
-use ieee.std_logic_arith.all;
 use ieee.numeric_std.all;
 
 --
@@ -54,7 +53,7 @@ begin
     constant counter_overflow_10khz : integer := 600; --1200;
         variable counter_10khz          : integer range 0 to (counter_overflow_10khz-1) := 0;
 
-        constant counter_overflow_3khz  : integer := 20000; --4000
+        constant counter_overflow_3khz  : integer := 2000; --4000
         variable counter_3khz           : integer range 0 to (counter_overflow_10khz-1) := 0;
         
     begin
@@ -98,21 +97,20 @@ begin
     -- Test: Change delay interval
     --
     process(clock_3khz)
-        constant delay_overflow : integer := 1023;
-        variable delay    : integer range 0 to delay_overflow := 0;
+        variable delay          : std_logic_vector(9 downto 0) := (others => '0');
+        constant delay_underflow: std_logic_vector(9 downto 0) := (others => '0');
+        constant delay_overflow : std_logic_vector(9 downto 0) := (others => '1');
         variable count_up : boolean := true;
     begin
         if (clock_3khz'event and clock_3khz = '1')
         then
-            delay_setup <= conv_std_logic_vector(delay, 10);
-
             if (delay = delay_overflow)
             then
                 -- counter top reached => now count down
                 count_up := false;
             end if;
 
-            if (delay = 0)
+            if (delay = delay_underflow)
             then
                 -- counter bottom reached => now count up
                 count_up := true;
@@ -121,11 +119,13 @@ begin
             -- adjust counter value according to current counting mode
             if (count_up)
             then
-                delay := delay + 1;
+                delay := std_logic_vector(to_unsigned(to_integer(unsigned(delay)) + 1, 10));
             else
-                delay := delay - 1;
+                delay := std_logic_vector(to_unsigned(to_integer(unsigned(delay)) - 1, 10));
             end if;
             
+            -- output generated value
+            delay_setup <= delay;
         end if;
     end process;
 
